@@ -303,10 +303,12 @@ class GenerateToken(RestURL):
         url1 = urlparse.urljoin(origin_url, '../../tokens/generateToken', False)
         url2 = urlparse.urljoin(origin_url, '../tokens/generateToken', False)
         url3 = urlparse.urljoin(origin_url, './generateToken', False)
+        url4 = urlparse.urljoin(origin_url, 'generateToken', False)
         self._referer = url1
-        for url in (url1, url2, url3):
+        for url in (url1, url2, url3, url4):
             try:
                 self._referer = url
+                self.__json_struct__ = Ellipsis
                 url_tuple = urlparse.urlsplit(url)
                 urllist = list(url_tuple)
                 query_dict = dict((k, v[0]) for k, v in 
